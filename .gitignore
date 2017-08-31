@@ -262,5 +262,5 @@ __pycache__/
 
 # project specific files
 *.dat
-PublicProfiles/
+*.pubxml
 *.tags
