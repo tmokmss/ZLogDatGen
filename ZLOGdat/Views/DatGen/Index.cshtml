@@ -1,0 +1,14 @@
+﻿@model ZLOGdat.Models.Prefectures
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Dat生成機</h2>
+
+@{Html.RenderPartial("Prefs", Model);}
+

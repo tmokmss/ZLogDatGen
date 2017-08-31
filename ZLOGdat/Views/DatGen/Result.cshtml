@@ -1,0 +1,26 @@
+﻿@model ZLOGdat.Models.Dat
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "Generated Result";
+}
+@using (Html.BeginForm("Download", "DatGen"))
+{
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                生成結果 <a href="@Url.Content("~/DatGen/Generate/"+Model.ID)">@Model.ID</a>
+            </div>
+            <div>
+                <input type="hidden" name="id" value="@Model.ID" />
+                <input class="btn btn-primary" type="submit" value="Download" id=@Model.ID />
+            </div>
+            <div class="panel-body">
+                <pre><code>@Model.dat</code></pre>
+            </div>
+        </div>
+    </div>
+}

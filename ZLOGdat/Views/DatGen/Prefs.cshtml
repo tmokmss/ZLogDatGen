@@ -1,0 +1,40 @@
+﻿@model ZLOGdat.Models.Prefectures
+
+@{
+    var options = new AjaxOptions();
+    options.HttpMethod = "POST";
+    //options.OnBegin = "OnBeginRequest";
+    //options.OnSuccess = "OnSuccessRequest";
+    //options.OnComplete = "OnCompleteRequest";
+    //options.OnFailure = "OnFailureRequest";
+    //options.Confirm = "Do you want to Add Country ?";
+}
+
+@using (Ajax.BeginForm("BeginGenerate", "DatGen", options))
+{
+    <div class="container">
+        <div class="row">
+            市郡データを含める都道府県を選択してください。
+            <p><input class="btn btn-primary" type="submit" value="生成する" /></p>
+        </div>
+        @for (var j = 0; j < Model.Areas.Count; j++)
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @j エリア
+                    <input type="hidden" name="id" value="@j" />
+                    <input class="btn btn-info btn-sm" type="submit" value="All" />
+                </div>
+                <div class="panel-body">
+                    @for (var i = 0; i < Model.Areas[j].Count; i++)
+                    {
+                        <label class="checkbox-inline">
+                            @Html.EditorFor(m => m.Areas[j][i].IsChecked)
+                            @Html.DisplayFor(m => m.Areas[j][i].Name)
+                        </label>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+}
