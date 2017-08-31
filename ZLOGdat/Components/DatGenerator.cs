@@ -34,13 +34,7 @@ namespace ZLOGdat.Components
             KuList = jarlList.KuList;
             ShichoList = jarlList.ShichoList;
         }
-
-        private void Execute()
-        {
-            GenerateDat();
-            Write2Dat(generatedText);
-        }
-
+        
         int jccLNum, jcgLNum, kuLNum, shichoLNum;
         // 現在の読み込み行番号を指定する変数群
 
@@ -184,18 +178,6 @@ namespace ZLOGdat.Components
         private int ByteCount(string str)
         {
             return Encoding.GetEncoding("shift-jis").GetByteCount(str);
-        }
-
-        private void Write2Dat(string buffer)
-        {
-            Encoding enc = Encoding.GetEncoding("shift-jis");
-            using (var sw = new StreamWriter(FilePath, false, enc))
-            {
-                buffer = FilePath.ToUpper() + " for ZLOGCG.EXE\r\n" + buffer;
-                buffer += "end of file " + FilePath;
-
-                sw.Write(buffer);
-            }
         }
 
         private string[] ReadValidLine(string type)
